@@ -1,7 +1,5 @@
 import sqlite3
-import time
 import random
-import date
 
 conn = sqlite3.connect('test.db')
 c = conn.cursor()
@@ -15,28 +13,6 @@ def data_entry():
 	c.close()
 	conn.close()
 
-def dynamic_data_entry():
-    unix = time.time()
-    date = str(datetime.datetime.fromtimestamp(unix) .strtime('%Y-%m-% %H:%M:%s'))
-    keyword = 'Python'
-    value = random.range(0,10)
-    c.execute("INSERT INTO test (unix, datestamp, keyword, value) VALUES (?, ?, ?, ?)")(unix, date, keywork, value)
-    conn.commit()
-    
-
-
-
-
-
-
-
-
-
-
 create_table()
-#data_entry()
-for i in range(10):
-    dynamic_data_entry()
-    time.sleep(1)
-c.close()
-conn.close()
+data_entry()
+
