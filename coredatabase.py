@@ -8,7 +8,7 @@ c = conn.cursor()
 def create_table(table_name, cols):
         """Creates a table if there already isnt one"""
         conn = sqlite3.connect('core.db')
-        c = conn.cursor()s
+        c = conn.cursor()
         c.execute("CREATE TABLE IF NOT EXISTS " + table_name + "(" + cols + ")")
 
 
@@ -35,9 +35,9 @@ def add_profile_entry(name, age, birthdate, gender, crime, priority, images_path
 def add_matching_logs(time, location, name):
         conn = sqlite3.connect('core.db')
         c = conn.cursor()
-        c.execute("INSERT INTO matching_logs (time, location, name) VALUES (?, ?, ?)", (time, location, name))
-        c.close()
+        c.execute("INSERT INTO matching_logs (time, location, name) VALUES (?, ?, ?)",(time, location, name))
         conn.commit()
+        c.close()
         conn.close()
 
 def data_lookup_profile(name):
