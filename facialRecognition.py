@@ -4,12 +4,6 @@ import numpy as np
 
 subject = ["Nicholas_Cage", "Jacksfilms"]
 
-#Turn an image into gray scale
-def grayConversion(img):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    return gray
-
-
 
 
 #Return a list of detected faces in the gray scale
@@ -17,7 +11,6 @@ def detectFace(folder_path, img):
     #Convert image to gray scale
     os.chdir(folder_path)
     image = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
-#   temp = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = np.array(image, 'uint8')
     #load OpenCV face detector(LBP)
     face_cascade = cv2.CascadeClassifier('/usr/share/opencv/lbpcascades/lbpcascade_frontalface.xml')
@@ -58,7 +51,6 @@ def trainRecognizer(profile_data_folder_path):
     faces, labels = prepareTrainingData(profile_data_folder_path)
     for item in faces:
         item = np.array(item, 'uint8')
-    print(labels)
     face_recognizer.train(faces, np.array(labels))
 
 
